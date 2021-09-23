@@ -64,7 +64,7 @@ async function initConsumer(){
                             }
                             console.log("crmLeadExport object = "+crmLead);
                             
-                            if(crmLead && crmLead.retryCount < maxRetriesLimit && crmLead.status && (crmLead.status.toLowerCase()=='new' || crmLead.status.toLowerCase()=='retry') )
+                            if(crmLead && crmLead.retryCount < maxRetriesLimit && crmLead.status && (crmLead.status.toLowerCase()==='new' || crmLead.status.toLowerCase()==='retry') )
                             {
                                 let publishForRetry=false ;
                                 let crmErrors;
@@ -91,7 +91,7 @@ async function initConsumer(){
                                            crmLead.retryCount++;
                                            console.log("Pushing the failure response to failureResponse .")
                                            crmLead.failureResponse.push({requestId:result.requestId,response:result.response});
-                                           if(crmLead==maxRetriesLimit)
+                                           if(crmLead===maxRetriesLimit)
                                            {
                                                crmLead.status="failed" ;
                                            }
